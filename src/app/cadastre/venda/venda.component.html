@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="{{data.title}}" [options]="false">
+      <h5></h5>
+      <hr>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row">    
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Anúncio</label>
+              <input type="text" class="form-control" required formControlName="detalheVeiculo" disabled>
+            </div>   
+         </div>              
+         <div class="col-md-12">
+          <div class="form-group">
+            <label for="">Título</label>
+            <input type="text" class="form-control" required formControlName="titulo" disabled>
+          </div>   
+       </div>    
+       <div class="col-md-12">
+        <div class="form-group">
+          <label for="">Descrição</label>
+          <textarea type="text" class="form-control" required formControlName="descricao"  disabled></textarea>
+        </div>                 
+      </div> 
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="">Obs</label>
+          <input type="text" class="form-control" required formControlName="detalheAnuncio">
+        </div>   
+     </div>      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Valor da proposta</label>
+          <input currencyMask type="number" class="form-control" required formControlName="valor"  disabled>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Valor da venda</label>
+          <input currencyMask type="number" class="form-control" required formControlName="valorDeVenda">
+        </div>
+      </div>
+          <!-- <div *ngFor="let companie of companiesList">
+             {{companie}}
+          </div> -->
+          <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">{{data.btnTitle}}</button>
+          <button type="button" [routerLink]="['/anuncios']" class="btn btn-danger">Cancelar</button>
+        </div>                       
+      </form>
+    </app-card>
+  </div>
+</div>

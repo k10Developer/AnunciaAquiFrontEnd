@@ -1,0 +1,45 @@
+
+<div class="col-sm-12">  
+  <app-card cardTitle="Anúncios" [options]="false">  
+    <button class="btn btn-outline-success btn-sm" id="adicionar" (click)="create()">Adicionar</button>
+    <div *ngIf="displayTable" class="table-responsive">      
+      <table datatable  class="table table-striped row-border table-hover">
+        <thead>
+          <tr>
+            <th>Veículo</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data de criação do anúncio</th> 
+            <th>Operação</th>         
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let anuncio of anuncios">
+            <td>
+              {{anuncio.detalhesVeiculo}}
+            </td>
+          <td>
+            {{anuncio.titulo}}
+          </td>
+            <td>
+                {{anuncio.descricao }}
+            </td>
+            <td>
+              {{anuncio.valor | currency:'R$'}}
+            </td>
+            <td>
+              {{anuncio.dataDeCriacaoDoAnuncio | date: 'dd/MM/yyyy' }}
+            </td>
+            <td>
+              <button (click)="update(anuncio.id)" class="btn btn-outline-primary  btn-sm" [disabled]="anuncio.finalizar">Editar</button>
+              <button (click)="delete(anuncio.id)"class="btn btn-outline-danger btn-sm" [disabled]="anuncio.finalizar">Deletar</button>
+              <button (click)="vender(anuncio.id)"class="btn btn-outline-success btn-sm" [disabled]="anuncio.finalizar">Finalizar venda</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
+<ng2-toasty [position]="position"></ng2-toasty>

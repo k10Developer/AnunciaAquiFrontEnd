@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="{{data.title}}" [options]="false">
+      <h5></h5>
+      <hr>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Veículo</label>
+                  <select class="form-control"  required formControlName="veiculoId">
+                    <option>Selecione uma veículo</option>
+                    <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo.id">
+                      {{ veiculo.marcaDescricao + " - " + veiculo.modeloDescricao + " - " + veiculo.placa + " - "+ veiculo.ano}}
+                    </option>                
+                  </select>
+                </div>        
+             </div>     
+             <div class="col-md-12">
+              <div class="form-group">
+                <label for="">Título</label>
+                <input type="text" class="form-control" required formControlName="titulo" placeholder="Título">
+              </div>   
+           </div>    
+           <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Descrição</label>
+              <textarea type="text" class="form-control" required formControlName="descricao"  placeholder="Descrição"></textarea>
+            </div>                 
+          </div> 
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Valor</label>
+              <input currencyMask type="number" class="form-control" required formControlName="valor"  placeholder="Valor">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" formControlName="ativo">
+              <label class="form-check-label">Ativo</label>
+            </div>  
+          </div>      
+          <!-- <div *ngFor="let companie of companiesList">
+             {{companie}}
+          </div> -->
+          <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">{{data.btnTitle}}</button>
+          <button type="button" [routerLink]="['/anuncios']" class="btn btn-danger">Cancelar</button>
+        </div>                       
+      </form>
+    </app-card>
+  </div>
+</div>

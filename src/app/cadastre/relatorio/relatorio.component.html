@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Relatório" [options]="false">
+      <h5></h5>
+      <hr>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row">    
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Data Inical</label>
+              <input type="date" class="form-control" required formControlName="dataInicial">
+            </div>   
+         </div>              
+         <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Data Final</label>
+            <input type="date" class="form-control" required formControlName="dataFim">
+          </div>   
+       </div>        
+          <!-- <div *ngFor="let companie of companiesList">
+             {{companie}}
+          </div> -->
+          <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Gerar relatório</button>
+        </div>                       
+      </form>
+    </app-card>
+  </div>
+</div>

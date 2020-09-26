@@ -1,0 +1,44 @@
+
+<div class="col-sm-12">  
+  <app-card cardTitle="Veículos" [options]="false">  
+    <button class="btn btn-outline-success btn-sm" id="adicionar" (click)="create()">Adicionar</button>
+    <div *ngIf="displayTable" class="table-responsive">      
+      <table datatable  class="table table-striped row-border table-hover">
+        <thead>
+          <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Placa</th>
+            <th>Ano</th>
+            <th>Valor de Compra</th> 
+            <th>Operação</th>         
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let veiculo of veiculos">
+            <td>
+              {{veiculo.marcaDescricao}}
+            </td>
+          <td>
+            {{veiculo.modeloDescricao}}
+          </td>
+            <td>
+                {{veiculo.placa}}
+            </td>
+            <td>
+              {{veiculo.ano}}
+            </td>
+            <td>
+              {{veiculo.valorDeCompra | currency:'R$'}}
+            </td>
+            <td>
+              <button (click)="update(veiculo.id)" class="btn btn-outline-primary  btn-sm">Editar</button>
+              <button (click)="delete(veiculo.id)"class="btn btn-outline-danger btn-sm">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
+<ng2-toasty [position]="position"></ng2-toasty>
