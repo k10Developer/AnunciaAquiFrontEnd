@@ -108,23 +108,22 @@ export class AnuncioComponent implements OnInit {
   }
 
   getVeiculos(){
-    if(this.data.dbop === DBOperation.create){
+
       this._veiculos.getTodosSemVinculo(Global.BASE_USER_ENDPOINT + "veiculo/v1/veiculos/semvinculo").subscribe(result => {
         this.veiculos = result;
+        if (this.data.dbop === DBOperation.update){
+          this._veiculos.getById(Global.BASE_USER_ENDPOINT + "veiculo/v1/veiculos",this.data.anuncio.veiculoId).subscribe(veiculo => {
+              if(veiculo!=null)
+                 {
+                   this.veiculos.push(veiculo);
+                 }
+          });
+        }    
   }, error => {
     this._notificationService.Notification(error, 'error');
   }, () => {
     
-  })  
-    }else{
-      this._veiculos.getTodos(Global.BASE_USER_ENDPOINT + "veiculo/v1/veiculos").subscribe(result => {
-        this.veiculos = result;
-  }, error => {
-    this._notificationService.Notification(error, 'error');
-  }, () => {
-    
-  })  
-    }
+  })     
     
   }
 }
