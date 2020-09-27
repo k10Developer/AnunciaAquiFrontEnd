@@ -28,10 +28,11 @@ export class VendaComponent implements OnInit {
   modelos: Modelo[];
   marcas: Marca[];
   modeloId: number;
+  write:boolean;
   public data: any;
   constructor(private router: Router,        
              private _vendaService: VendaService,
-             private _notificationService: AlertNotificationService,
+             private _notificationService: AlertNotificationService,             
     private fb: FormBuilder) { 
       const nav = this.router.getCurrentNavigation();
       this.data = nav.extras.state;
@@ -39,17 +40,30 @@ export class VendaComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    if (this.data.dbop === DBOperation.create){
         var vendaAnuncio = new VendaAnuncio();
         vendaAnuncio.detalheVeiculo = this.data.venda.detalhesVeiculo;
         vendaAnuncio.titulo = this.data.venda.titulo;
         vendaAnuncio.descricao = this.data.venda.descricao;
-        vendaAnuncio.valor = this.data.venda.valor;
-        vendaAnuncio.detalheAnuncio = "";
-        vendaAnuncio.valorDeVenda = 0;
-        this.registerForm.setValue(vendaAnuncio);
-     }     
-  }
+        vendaAnuncio.valor = this.data.venda.valor;        
+
+        if (this.data.dbop === DBOperation.create){
+          vendaAnuncio.detalheAnuncio = "";
+          vendaAnuncio.valorDeVenda = 0;
+          this.write = true;
+          this.registerForm.setValue(vendaAnuncio);
+        }else{
+          this._vendaService.getVendaPorAnuncioId(Global.BASE_USER_ENDPOINT + "venda/v1/Vendas/Anuncio",this.data.venda.id).subscribe(result => {
+            vendaAnuncio.detalheAnuncio = result.detalheAnuncio;
+            vendaAnuncio.valorDeVenda = result.valorDeVenda;
+            this.write = false;
+            this.registerForm.setValue(vendaAnuncio);
+          }, error => {
+            this._notificationService.Notification(error, 'error');
+          }, () => {          
+          })
+        }      
+       
+     }      
   
   createForm() {
     this.registerForm = this.fb.group({
@@ -63,8 +77,11 @@ export class VendaComponent implements OnInit {
   }
 
   onSubmit(){
-  
+  if(this.data.dbop === DBOperation.create)
         this.new();   
+   else{
+          this.router.navigate(['/anuncios']);
+      }
   }
 
   new() {

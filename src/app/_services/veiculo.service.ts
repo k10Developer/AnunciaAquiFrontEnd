@@ -28,4 +28,7 @@ export class VeiculoService {
     getTodos(url: string): Observable<any> {                     
        return this.http.get<any>(url)        
    }
+   getTodosSemVinculo(url: string): Observable<any> {                     
+    return this.http.get<any>(url)        
+}
 }

@@ -34,7 +34,9 @@
             <td>
               <button (click)="update(anuncio.id)" class="btn btn-outline-primary  btn-sm" [disabled]="anuncio.finalizar">Editar</button>
               <button (click)="delete(anuncio.id)"class="btn btn-outline-danger btn-sm" [disabled]="anuncio.finalizar">Deletar</button>
-              <button (click)="vender(anuncio.id)"class="btn btn-outline-success btn-sm" [disabled]="anuncio.finalizar">Finalizar venda</button>
+              <button *ngIf="!anuncio.finalizar || anuncio.finalizar == null" (click)="vender(anuncio.id)"class="btn btn-outline-success btn-sm" [disabled]="anuncio.finalizar">Finalizar venda</button>
+              
+              <button *ngIf="anuncio.finalizar" (click)="detalheVenda(anuncio.id)"class="btn btn-outline-success btn-sm">Detalhe da venda</button>
             </td>
           </tr>
         </tbody>

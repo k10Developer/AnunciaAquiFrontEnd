@@ -26,7 +26,7 @@
       <div class="col-md-12">
         <div class="form-group">
           <label for="">Obs</label>
-          <input type="text" class="form-control" required formControlName="detalheAnuncio">
+          <input type="text" class="form-control" required formControlName="detalheAnuncio" [disabled]="!write">
         </div>   
      </div>      
       <div class="col-md-6">
@@ -38,7 +38,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="">Valor da venda</label>
-          <input currencyMask type="number" class="form-control" required formControlName="valorDeVenda">
+          <input currencyMask type="number" class="form-control" required formControlName="valorDeVenda" [disabled]="!write">
         </div>
       </div>
           <!-- <div *ngFor="let companie of companiesList">

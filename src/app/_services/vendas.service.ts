@@ -33,4 +33,8 @@ export class VendaService {
     const newUrl = `${url}/${relatorio.dataInicial}/${relatorio.dataFim}`;
     return this.http.get<any>(newUrl);      
    }
+   getVendaPorAnuncioId(url: string,id: number){
+    const newUrl = `${url}/${id}`;   
+    return this.http.get<any>(newUrl);  
+   }
 }

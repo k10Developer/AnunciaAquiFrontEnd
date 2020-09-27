@@ -45,6 +45,10 @@ export class ListAnuncioComponent implements OnInit  {
      const venda = this.anuncios.filter(c => c.id === id)[0];
      this.router.navigateByUrl('/venda',{state:{title : 'Venda', btnTitle :  'Finalizar' ,dbop: DBOperation.create, venda : venda }})
   }
+  detalheVenda(id: string){
+    const venda = this.anuncios.filter(c => c.id === id)[0];
+     this.router.navigateByUrl('/venda',{state:{title : 'Venda', btnTitle :  'Finalizar' ,dbop: DBOperation.update, venda : venda }})
+  }
   delete(id: string){
     this._alertNotification.confirm('Por favor confirme..', 'Deseja realizar essa operação?').
     then((confirmed) => {
