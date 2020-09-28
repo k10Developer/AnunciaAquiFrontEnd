@@ -80,7 +80,24 @@ const NavigationItems = [
           }   
 
         ]
+      },
+      {
+        id: 'menu5',
+        title: 'Cadastros Auxiliares',
+        type: 'collapse',
+        icon: 'feather icon-pen',
+        children: [
+          {
+            id: 'menu6',
+            title: 'Marca',
+            type: 'item',
+            icon: 'feather icon-crosshair',
+            classes: 'nav-item',
+            url: '/marcas'           
+          }
+        ]
       }
+    
     ]
   }
   

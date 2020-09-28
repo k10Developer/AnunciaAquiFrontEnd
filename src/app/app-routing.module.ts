@@ -51,7 +51,15 @@ const routes: Routes = [
       {
         path: 'relatorio',
         loadChildren: './cadastre/relatorio/relatorio.module#RelatorioModule'
-      }
+      },
+      {
+        path: 'marcas',
+        loadChildren: './cadastre/auxiliares/marca/list-marca/list-marca.module#ListMarcaModule'
+      },
+      {
+        path: 'marca',
+        loadChildren: './cadastre/auxiliares/marca/marca/marca.module#MarcaModule'
+      },
     ]
   },
   {

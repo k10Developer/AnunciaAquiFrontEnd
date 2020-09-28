@@ -16,6 +16,8 @@ import { VendaRoutingModule } from './venda/venda-routing.module';
 import { VendaModule } from './venda/venda.module';
 import { RelatorioModule } from './relatorio/relatorio.module';
 import { RelatorioRoutingModule } from './relatorio/relatorio-routing.module';
+import { ListMarcaComponent } from './auxiliares/marca/list-marca/list-marca.component';
+import { MarcaModule } from './auxiliares/marca/marca/marca.module';
 
 
 @NgModule({
@@ -29,11 +31,13 @@ import { RelatorioRoutingModule } from './relatorio/relatorio-routing.module';
     AnuncioModule,
     VendaRoutingModule,
     VendaModule,
+    UserRoutingModule,
+    MarcaModule,
     RelatorioRoutingModule,
     RelatorioModule,
     SharedModule
 
   ],
-  declarations: [ListUserComponent,ListVeiculosComponent,ListAnuncioComponent]
+  declarations: [ListUserComponent,ListVeiculosComponent,ListAnuncioComponent,ListMarcaComponent]
 })
 export class CadastreModule { }

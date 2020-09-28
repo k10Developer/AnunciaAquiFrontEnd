@@ -18,13 +18,12 @@ export class ModeloService {
         return this.http.put(url, modelo)        
     }
     delete(url: string, id: string):Observable<any>{
-        let httpOptions = {headers: {'Content-Type':'application/json'}, body:{id:id}}        
-        return this.http.delete(url, httpOptions)       
+        const newUrl = `${url}/${id}`;      
+        return this.http.delete(newUrl);    
     }
     getById(url: string,id:string): Observable<any> {           
-         let params = new HttpParams();
-         params = params.append('id' ,id);           
-        return this.http.get<any>(url,{ params })        
+        const newUrl = `${url}/${id}`;        
+        return this.http.get<any>(newUrl);      
     }
     getTodos(url: string,id:string): Observable<any> {                     
        return this.http.get<any>(url)        
