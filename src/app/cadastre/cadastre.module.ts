@@ -18,6 +18,8 @@ import { RelatorioModule } from './relatorio/relatorio.module';
 import { RelatorioRoutingModule } from './relatorio/relatorio-routing.module';
 import { ListMarcaComponent } from './auxiliares/marca/list-marca/list-marca.component';
 import { MarcaModule } from './auxiliares/marca/marca/marca.module';
+import { ListModeloComponent } from './auxiliares/modelo/list-modelo/list-modelo.component';
+import { ModeloModule } from './auxiliares/modelo/modelo/modelo.module';
 
 
 @NgModule({
@@ -33,11 +35,12 @@ import { MarcaModule } from './auxiliares/marca/marca/marca.module';
     VendaModule,
     UserRoutingModule,
     MarcaModule,
+    ModeloModule,
     RelatorioRoutingModule,
     RelatorioModule,
     SharedModule
 
   ],
-  declarations: [ListUserComponent,ListVeiculosComponent,ListAnuncioComponent,ListMarcaComponent]
+  declarations: [ListUserComponent,ListVeiculosComponent,ListAnuncioComponent,ListMarcaComponent,ListModeloComponent]
 })
 export class CadastreModule { }

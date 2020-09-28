@@ -60,6 +60,14 @@ const routes: Routes = [
         path: 'marca',
         loadChildren: './cadastre/auxiliares/marca/marca/marca.module#MarcaModule'
       },
+      {
+        path: 'modelos',
+        loadChildren: './cadastre/auxiliares/modelo/list-modelo/list-modelo.module#ListModeloModule'
+      },
+      {
+        path: 'modelo',
+        loadChildren: './cadastre/auxiliares/modelo/modelo/modelo.module#ModeloModule'
+      },
     ]
   },
   {

@@ -94,6 +94,14 @@ const NavigationItems = [
             icon: 'feather icon-crosshair',
             classes: 'nav-item',
             url: '/marcas'           
+          },
+          {
+            id: 'menu7',
+            title: 'Modelo',
+            type: 'item',
+            icon: 'feather icon-crosshair',
+            classes: 'nav-item',
+            url: '/modelos'           
           }
         ]
       }

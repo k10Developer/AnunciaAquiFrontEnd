@@ -1,0 +1,49 @@
+<div class="col-sm-12"> 
+<app-card cardTitle="Marcas" [options]="false">  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="">Marca</label>
+        <select class="form-control" #selectElem (change)='setMarca(selectElem.value)'>
+          <option>Selecione uma marca</option>
+          <option *ngFor="let m of marcas" [value]="m.id">
+            {{ m.descricao}}
+          </option>                
+        </select>
+      </div>        
+   </div> 
+</div>
+</app-card>
+</div>
+
+<div class="col-sm-12">  
+  <app-card cardTitle="Modelos" [options]="false">  
+    <button class="btn btn-outline-success btn-sm" id="adicionar" (click)="create()" [disabled]="marca==undefined">Adicionar</button>
+    <div *ngIf="displayTable" class="table-responsive">      
+      <table datatable  class="table table-striped row-border table-hover">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Descrição</th>          
+            <th>Operação</th>         
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let modelo of modelos">
+            <td>
+              {{modelo.id}}
+            </td>
+          <td>
+            {{modelo.descricao}}
+          </td>          
+            <td>
+              <button (click)="update(modelo.id)" class="btn btn-outline-primary  btn-sm">Editar</button>
+              <button (click)="delete(modelo.id)"class="btn btn-outline-danger btn-sm">Deletar</button>              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-card>
+</div>
+<ng2-toasty [position]="position"></ng2-toasty>

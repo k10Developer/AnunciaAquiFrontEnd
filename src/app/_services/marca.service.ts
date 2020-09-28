@@ -21,7 +21,7 @@ export class MarcaService {
         const newUrl = `${url}/${id}`;         
         return this.http.delete(newUrl);       
     }
-    getById(url: string,id:string): Observable<any> {           
+    getById(url: string,id:number): Observable<any> {           
         const newUrl = `${url}/${id}`;         
         return this.http.get<any>(newUrl);    
     }
